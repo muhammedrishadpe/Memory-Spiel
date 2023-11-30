@@ -11,7 +11,10 @@ const gameIcons = [
   "🎉",
   "🎁",
   "👗",
-  "🪞"
+  "🪞",
+  "🔥",
+  "🧨",
+  "🎇"
 ];
 
 function App() {
@@ -24,7 +27,7 @@ function App() {
           <div className="flip-card-inner">
             <div className="flip-card-front" />
             <div className="flip-card-back">
-            🤸‍♂️
+            {data}
             </div>
           </div>
         </div>
