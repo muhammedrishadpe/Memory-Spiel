@@ -53,8 +53,33 @@ function App() {
     setPices(newPieces);
   };
 
-  console.log(pieces);
+  const gameLogicForFlipped = () => {
+    const flippedData = pieces.filter((data) => data.flipped);
 
+    if (flippedData.length === 2) {
+      setTimeout(() => {
+        if (flippedData[0].emoji === flippedData[1].emoji) {
+          //Success
+        } else {
+          setPices(
+            pieces.map((piece) => {
+              if (
+                piece.position === flippedData[0].position ||
+                piece.position === flippedData[1].position
+              ) {
+                piece.flipped = false;
+              }
+              return piece;
+            })
+          );
+        }
+      }, 800);
+    }
+  };
+
+  useEffect(() => {
+    gameLogicForFlipped();
+  }, [pieces])
   return (
     <main>
       <h1>Memory Spiel</h1>
