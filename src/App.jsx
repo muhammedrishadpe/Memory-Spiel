@@ -54,12 +54,23 @@ function App() {
   };
 
   const gameLogicForFlipped = () => {
-    const flippedData = pieces.filter((data) => data.flipped);
+    const flippedData = pieces.filter((data) => data.flipped && !data.solved);
 
     if (flippedData.length === 2) {
       setTimeout(() => {
         if (flippedData[0].emoji === flippedData[1].emoji) {
           //Success
+           setPices(
+            pieces.map((piece) => {
+              if (
+                piece.position === flippedData[0].position ||
+                piece.position === flippedData[1].position
+              ) {
+                piece.solved = true;
+              }
+              return piece;
+            })
+          );
         } else {
           setPices(
             pieces.map((piece) => {
@@ -86,7 +97,7 @@ function App() {
       <div className="container">
         {pieces.map((data, index) => (
           <div
-            className={`flip-card ${data.flipped ? "active" : ""}`}
+            className={`flip-card ${data.flipped || data.solved ? "active" : ""}`}
             key={index}
             onClick={() => handleActive(data)}
           >
