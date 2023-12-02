@@ -3,20 +3,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const gameIcons = [
-  "🏝️",
-  "🍍",
-  "🍹",
-  "🥴",
-  "💘",
-  "🎉",
-  "🎁",
-  "👗",
-  "🪞",
-  "🔥",
-  "🧨",
-  "🎇",
-];
+const gameIcons = ["🏝️", "🍍", "🍹", "🥴", "💘", "🎉", "🎁", "👗", "🪞"];
 
 function App() {
   const [pieces, setPices] = useState([]);
@@ -43,6 +30,8 @@ function App() {
   }, []);
 
   const handleActive = (data) => {
+    const flippedData = pieces.filter((data) => data.flipped && !data.solved);
+    if (flippedData.length === 2) return;
     const newPieces = pieces.map((piece) => {
       if (piece.position === data.position) {
         piece.flipped = !piece.flipped;
@@ -60,7 +49,7 @@ function App() {
       setTimeout(() => {
         if (flippedData[0].emoji === flippedData[1].emoji) {
           //Success
-           setPices(
+          setPices(
             pieces.map((piece) => {
               if (
                 piece.position === flippedData[0].position ||
@@ -88,16 +77,30 @@ function App() {
     }
   };
 
+  const checkIfGameFinished = () => {
+    if (pieces.every((piece) => piece.solved)) {
+      alert("Solved");
+    } else {
+      console.log("Not Solved");
+    }
+  };
+
   useEffect(() => {
     gameLogicForFlipped();
-  }, [pieces])
+
+    if (pieces.length > 0) {
+      checkIfGameFinished();
+    }
+  }, [pieces]);
   return (
     <main>
       <h1>Memory Spiel</h1>
       <div className="container">
         {pieces.map((data, index) => (
           <div
-            className={`flip-card ${data.flipped || data.solved ? "active" : ""}`}
+            className={`flip-card ${
+              data.flipped || data.solved ? "active" : ""
+            }`}
             key={index}
             onClick={() => handleActive(data)}
           >
