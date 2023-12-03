@@ -123,10 +123,8 @@ function App() {
         <div className="game-completed">
           <h1>YOU WINN!!!</h1>
           <Confetti width={window.innerWidth} height={window.innerHeight} />
-        
-         </div>
+        </div>
       )}
-       
     </main>
   );
 }

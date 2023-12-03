@@ -5,10 +5,21 @@
   text-align: center;
 }
 
-h1{
+h1 {
   font-size: 32px;
 }
 
+.game-completed {
+  background-color: rgba(0, 0, 0, 0.753);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.game-completed h1 {
+  font-size: 60px;
+}
 .container {
   display: grid;
   grid-template-columns: repeat(6, 150px);
