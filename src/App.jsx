@@ -1,12 +1,20 @@
 // import { useState } from 'react'
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./App.css";
+import Confetti from "react-confetti";
 
 const gameIcons = ["🏝️", "🍍", "🍹", "🥴", "💘", "🎉", "🎁", "👗", "🪞"];
 
 function App() {
   const [pieces, setPices] = useState([]);
+  const isGameCompleted = useMemo(() => {
+    if (pieces.length > 0 && pieces.every((piece) => piece.solved)) {
+      return true;
+    } else {
+      return false;
+    }
+  }, [pieces]);
 
   const startGame = () => {
     const dublicateGameIcons = gameIcons.concat(gameIcons);
@@ -79,7 +87,7 @@ function App() {
 
   const checkIfGameFinished = () => {
     if (pieces.every((piece) => piece.solved)) {
-      alert("Solved");
+      // alert("Solved");
     } else {
       console.log("Not Solved");
     }
@@ -111,6 +119,14 @@ function App() {
           </div>
         ))}
       </div>
+      {isGameCompleted && (
+        <div className="game-completed">
+          <h1>YOU WINN!!!</h1>
+          <Confetti width={window.innerWidth} height={window.innerHeight} />
+        
+         </div>
+      )}
+       
     </main>
   );
 }
