@@ -1,9 +1,25 @@
-# React + Vite
+Memory-Spiel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Memory-Spiel ist ein einfaches Kartenspiel, das mit React erstellt wurde.
+Funktionen
 
-Currently, two official plugins are available:
+Hier sind die Hauptfunktionen des Memory-Spiels:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# Memory-Spiel
+    Karten mischen und verteilen
+    Spiellogik zum Finden von Paaren
+
+Installation
+
+Um das Memory-Spiel zu installieren, befolge diese Schritte:
+
+    Klone das Repository, indem du den folgenden Befehl in deinem Terminal ausführst:
+
+>> git clone git@github.com:muhammedrishadpe/Memory-Spiel.git
+
+Navigiere zum Projektverzeichnis:
+
+>> cd Memory-Spiel
+
+Installiere die Abhängigkeiten:
+
+>> npm install
